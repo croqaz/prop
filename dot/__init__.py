@@ -1,1 +1,1 @@
-from .get import get, strict_get  # NOQA
+from .get import get, strict_get  # noqa: F401
