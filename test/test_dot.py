@@ -1,6 +1,12 @@
 from dot import get as dot_get
 
 
+class A:
+
+    def __init__(self, val):
+        self.val = val
+
+
 def test_dot_get_list():
     assert dot_get(['asd'], '0') == 'asd'
 
@@ -25,10 +31,6 @@ def test_dot_get_dict():
 
 
 def test_dot_get_obj():
-    class A:
-        def __init__(self, val):
-            self.val = val
-
     a = A(1)
     assert dot_get(a, 'val') == 1
     assert dot_get(a, 'nope') is None
@@ -38,6 +40,24 @@ def test_dot_get_obj():
     assert dot_get(a, 'val.0') == 0
     assert dot_get(a, 'val.1') is False
     assert dot_get(a, 'val.2') == 'foo'
+
+
+def test_dot_get_mixed():
+    data = {
+        'nested': {1: '1', None: 'null', 'x': 'y'},
+        'list': [[[None, True, 9]]],
+    }
+
+    assert dot_get(data, 'list.0.0.1') is True
+
+    # These examples are failing:
+    # assert dot_get(data, 'nested.1') == '1'
+    # assert dot_get(data, 'nested.None') == 'null'
+
+    a = A(data)
+
+    assert dot_get(a, 'val.nested.x') == 'y'
+    assert dot_get(a, 'val.list.0.0.1') is True
 
     # from IPython import embed
     # embed(colors='linux')

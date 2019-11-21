@@ -29,6 +29,8 @@ dot.get(data, 'list.0.-1')
 # 9
 ```
 
+Limitations: For navigating dicts, only string keys are supported.
+
 
 ## Installation
 
