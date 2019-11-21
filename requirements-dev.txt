@@ -1,0 +1,6 @@
+# Dev lint code
+flake8
+# Dev test code
+pytest-cov
+# Dev coverage
+codecov
