@@ -21,4 +21,4 @@ coverage:
 	${ENV}pytest --cov-report term --cov=dot test/
 
 test:
-	${ENV}pytest -rasv test/
+	${ENV}pytest -ra -sv test/
