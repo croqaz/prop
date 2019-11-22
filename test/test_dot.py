@@ -42,6 +42,24 @@ def test_dot_get_obj():
     assert dot_get(a, 'val.2') == 'foo'
 
 
+def test_circular_refs():
+    c = A(1)
+    b = A(c)
+    a = A(b)
+
+    assert dot_get(c, 'val') == 1
+    assert dot_get(b, 'val') is c
+    assert dot_get(a, 'val') is b
+
+    assert dot_get(a, 'val.val.val') == 1
+
+    # Create cyclic ref
+    c.val = a
+
+    assert dot_get(c, 'val') == a
+    assert dot_get(c, 'val.val.val.val') == a
+
+
 def test_dot_get_mixed():
     data = {
         'nested': {1: '1', None: 'null', 'x': 'y'},
