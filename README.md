@@ -1,8 +1,9 @@
-# Py · dot
+# Py · <font color=gray>dot</font>
 
-[![Python check](https://github.com/croqaz/dot/workflows/Python/badge.svg)](https://github.com/croqaz/dot/actions) ![Python 3.6](https://img.shields.io/badge/Python-3.6-blue.svg)
+  [![Build Status][build-image]][build-url]
+  [![Python ver][python-image]][python-url]
 
-A Python library for getting a property from a nested object using a dot path.
+A Python 🐍 library for getting a property from a nested object using a dot path.
 
 
 ## Usage
@@ -41,10 +42,19 @@ $ pip install git+https://github.com/croqaz/dot
 
 ## Similar libraries
 
+* https://github.com/chrisinajar/py-dot-prop - (Python) Get a property from a dict or list
 * https://github.com/sindresorhus/dot-prop - (Node.js) Get, set, or delete a property from a nested object using a dot path
-* https://github.com/jonschlinkert/get-value - (Node.js) Use property paths (`a.b.c`) to get a nested value from an object.
+* https://github.com/jonschlinkert/get-value - (Node.js) Use property paths (`a.b.c`) to get a nested value from an object
 
 
 ## License
 
 [MIT](LICENSE) © Cristi Constantin.
+
+
+[pypi-image]: https://img.shields.io/pypi/v/prop.svg
+[pypi-url]: https://pypi.org/project/prop/
+[build-image]: https://github.com/croqaz/dot/workflows/Python/badge.svg
+[build-url]: https://github.com/croqaz/dot/actions
+[python-image]: https://img.shields.io/badge/Python-3.6-blue.svg
+[python-url]: https://python.org
