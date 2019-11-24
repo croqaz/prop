@@ -1,4 +1,4 @@
-from dot import get as dot_get
+from prop import get as dot_get
 
 
 class A:

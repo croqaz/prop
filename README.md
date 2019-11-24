@@ -1,4 +1,4 @@
-# Py · <font color=gray>dot</font>
+# prop · py
 
   [![Build Status][build-image]][build-url]
   [![Python ver][python-image]][python-url]
@@ -9,7 +9,7 @@ A Python 🐍 library for getting a property from a nested object using a dot pa
 ## Usage
 
 ```py
-import dot
+import prop
 
 data = {
     'k1': 'v1',
@@ -17,16 +17,16 @@ data = {
     'list': [[None, True, 9]]
 }
 
-dot.get(data, 'k1')
+prop.get(data, 'k1')
 # v1
 
-dot.get(data, 'nested.x')
+prop.get(data, 'nested.x')
 # x
 
-dot.get(data, 'list.0.1')
+prop.get(data, 'list.0.1')
 # True
 
-dot.get(data, 'list.0.-1')
+prop.get(data, 'list.0.-1')
 # 9
 ```
 
@@ -54,7 +54,7 @@ $ pip install git+https://github.com/croqaz/dot
 
 [pypi-image]: https://img.shields.io/pypi/v/prop.svg
 [pypi-url]: https://pypi.org/project/prop/
-[build-image]: https://github.com/croqaz/dot/workflows/Python/badge.svg
-[build-url]: https://github.com/croqaz/dot/actions
+[build-image]: https://github.com/croqaz/prop/workflows/Python/badge.svg
+[build-url]: https://github.com/croqaz/prop/actions
 [python-image]: https://img.shields.io/badge/Python-3.6-blue.svg
 [python-url]: https://python.org
