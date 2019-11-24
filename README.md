@@ -36,7 +36,7 @@ Limitations: For navigating dicts, only string keys are supported.
 ## Installation
 
 ```sh
-$ pip install git+https://github.com/croqaz/dot
+$ pip install git+https://github.com/croqaz/prop
 ```
 
 

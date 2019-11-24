@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 NAME = 'prop'
 DESCRIPTION = 'Library for parsing JSON lines.'
 KEYWORDS = 'prop attr dot object dict list'
-URL = 'https://github.com/croqaz/dot'
+URL = 'https://github.com/croqaz/prop'
 AUTHOR = 'Cristi Constantin'
 EMAIL = 'cristi.constantin@speedpost.net'
 REQUIRES_PYTHON = '>=3.6.0'
