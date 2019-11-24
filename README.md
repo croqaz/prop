@@ -1,5 +1,6 @@
 # prop · py
 
+  [![Pypi Version][pypi-image]][pypi-url]
   [![Build Status][build-image]][build-url]
   [![Python ver][python-image]][python-url]
 
@@ -36,7 +37,7 @@ Limitations: For navigating dicts, only string keys are supported.
 ## Installation
 
 ```sh
-$ pip install git+https://github.com/croqaz/prop
+$ pip install prop
 ```
 
 
