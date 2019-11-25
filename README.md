@@ -2,6 +2,7 @@
 
   [![Pypi Version][pypi-image]][pypi-url]
   [![Build Status][build-image]][build-url]
+  [![Code coverage][cover-image]][cover-url]
   [![Python ver][python-image]][python-url]
 
 A Python 🐍 library for getting a property from a nested object using a dot path.
@@ -57,5 +58,7 @@ $ pip install prop
 [pypi-url]: https://pypi.org/project/prop/
 [build-image]: https://github.com/croqaz/prop/workflows/Python/badge.svg
 [build-url]: https://github.com/croqaz/prop/actions
+[cover-image]: https://codecov.io/gh/croqaz/prop/branch/master/graph/badge.svg
+[cover-url]: https://codecov.io/gh/croqaz/prop
 [python-image]: https://img.shields.io/badge/Python-3.6-blue.svg
 [python-url]: https://python.org
