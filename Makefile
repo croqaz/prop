@@ -15,10 +15,13 @@ update:
 	${ENV}pip install -U -r requirements-dev.txt
 
 lint:
-	${ENV}flake8 --count --statistics
+	# stop if there are Python syntax errors or undefined names
+	${ENV}flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+	# exit-zero treats all errors as warnings
+	${ENV}flake8 . --count --exit-zero --statistics
 
 coverage:
-	${ENV}pytest --cov-report term --cov=dot test/
+	${ENV}pytest --cov-report term --cov-report xml --cov=. test/
 
 test:
 	${ENV}pytest -ra -sv test/
