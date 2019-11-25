@@ -1,3 +1,5 @@
+import pytest
+from prop import strict_get
 from prop import get as dot_get
 
 
@@ -15,6 +17,7 @@ def test_dot_get_list():
     assert dot_get(data, 'nested.1') is False
     assert dot_get(data, 'nested.2') == 'foo'
 
+    # inexistent
     assert dot_get(data, 'nested.9') is None
     assert dot_get(data, 'nested.9', 'default') == 'default'
 
@@ -26,6 +29,7 @@ def test_dot_get_dict():
     assert dot_get(data, 'nested.int') == 0
     assert dot_get(data, 'nested.null') is None
 
+    # inexistent
     assert dot_get(data, 'nope') is None
     assert dot_get(data, 'nope', 'default') == 'default'
 
@@ -40,6 +44,9 @@ def test_dot_get_obj():
     assert dot_get(a, 'val.0') == 0
     assert dot_get(a, 'val.1') is False
     assert dot_get(a, 'val.2') == 'foo'
+
+    assert dot_get(a, 'nope') is None
+    assert dot_get(a, 'nope', 'default') == 'default'
 
 
 def test_circular_refs():
@@ -62,7 +69,11 @@ def test_circular_refs():
 
 def test_dot_get_mixed():
     data = {
-        'nested': {1: '1', None: 'null', 'x': 'y'},
+        'nested': {
+            1: '1',
+            'x': 'y',
+            None: 'null',
+        },
         'list': [[[None, True, 9]]],
     }
 
@@ -76,6 +87,31 @@ def test_dot_get_mixed():
 
     assert dot_get(a, 'val.nested.x') == 'y'
     assert dot_get(a, 'val.list.0.0.1') is True
+
+
+def test_dot_strict_get():
+    data = {
+        '1': 1,
+        'nested': {
+            'x': 'y',
+            'int': 0,
+            'null': None
+        },
+        'list': [[[None, True, 9]]],
+    }
+
+    assert strict_get(data, '1') == 1
+    assert strict_get(data, 'nested.x') == 'y'
+    assert strict_get(data, 'nested.int') == 0
+    assert strict_get(data, 'nested.null') is None
+
+    assert strict_get(data, 'list.0.0.1') is True
+
+    with pytest.raises(KeyError):
+        assert strict_get(data, 'nope') is None
+
+    with pytest.raises(IndexError):
+        assert strict_get(data, 'list.9') is None
 
     # from IPython import embed
     # embed(colors='linux')

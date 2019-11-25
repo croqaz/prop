@@ -21,7 +21,7 @@ lint:
 	${ENV}flake8 . --count --exit-zero --statistics
 
 coverage:
-	${ENV}pytest --cov-report term --cov-report xml --cov=. test/
+	${ENV}pytest --cov-report term --cov-report xml --cov=prop/ test/
 
 test:
 	${ENV}pytest -ra -sv test/
