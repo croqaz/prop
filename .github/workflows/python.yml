@@ -30,3 +30,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -ra -sv test/
+
+    - name: Publish coverage
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.txt
+        name: codecov-umbrella
