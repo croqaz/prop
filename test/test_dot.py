@@ -92,20 +92,23 @@ def test_dot_get_mixed():
 def test_dot_strict_get():
     data = {
         '1': 1,
+        'a': A(7),
         'nested': {
             'x': 'y',
             'int': 0,
-            'null': None
+            'null': None,
         },
         'list': [[[None, True, 9]]],
     }
 
     assert strict_get(data, '1') == 1
+    assert strict_get(data, 'a.val') == 7
     assert strict_get(data, 'nested.x') == 'y'
     assert strict_get(data, 'nested.int') == 0
     assert strict_get(data, 'nested.null') is None
 
     assert strict_get(data, 'list.0.0.1') is True
+    assert strict_get(data, 'list.0.0.-1') == 9
 
     with pytest.raises(KeyError):
         assert strict_get(data, 'nope') is None
