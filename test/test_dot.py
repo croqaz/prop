@@ -116,5 +116,28 @@ def test_dot_strict_get():
     with pytest.raises(IndexError):
         assert strict_get(data, 'list.9') is None
 
+
+def test_dot_set_mix():
+    data = {
+        'a': 'a',
+        'nested': {
+            'x': 'x',
+            'int': 0,
+            'list': ['y', 'n'],
+        },
+    }
+
+    assert strict_get(data, 'nested.x') == 'x'
+    assert strict_get(data, 'nested.list.0') == 'y'
+
+    nested = dot_get(data, 'nested')
+    nested['x'] = 'yyy'
+
+    li = strict_get(data, 'nested.list')
+    li.insert(0, 'z')
+
+    assert strict_get(data, 'nested.x') == 'yyy'
+    assert strict_get(data, 'nested.list.0') == 'z'
+
     # from IPython import embed
     # embed(colors='linux')
