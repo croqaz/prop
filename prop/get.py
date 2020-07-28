@@ -1,13 +1,18 @@
+from .path import process_path
 
-def get(obj, path: str, default=None):
+
+def get(obj, path, default=None):
     """
     Forgiving get dot prop.
     If some level doesn't exist, it returns the default.
     """
     value = obj
-    for key in path.split('.'):
+    for key in process_path(path):
         if isinstance(value, list):
-            index = int(key)
+            if isinstance(key, (str, bytes)):
+                index = int(key, 10)
+            else:
+                index = key
             if index < len(value):
                 value = value[index]
             else:
@@ -25,15 +30,15 @@ def get(obj, path: str, default=None):
     return value
 
 
-def strict_get(obj, path: str):
+def strict_get(obj, path):
     """
     Strict get dot prop.
     If some level doesn't exist, it raises the apropriate exception.
     """
     value = obj
-    for key in path.split('.'):
+    for key in process_path(path):
         if isinstance(value, list):
-            value = value[int(key)]
+            value = value[int(key, 10)]
         elif isinstance(value, dict):
             value = value[key]
         else:
