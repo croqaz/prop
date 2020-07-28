@@ -87,15 +87,14 @@ def test_dot_get_mixed():
 
     assert dot_get(data, 'list.0.0.1') is True
     assert dot_get(data, 'list.0.0.2') == 9
-    assert dot_get(data, b'byte') == b'this'
     assert dot_get(data, ('list', 0, 0, 1)) is True
     assert dot_get(data, ['list', 0, 0, 2]) == 9
-    assert dot_get(data, [b'byte']) == b'this'
 
     # String paths can only access string keys, so this won't work:
     # assert dot_get(data, 'nested.1') == '1'
     # assert dot_get(data, 'nested.None') == 'null'
     # But this works:
+    assert dot_get(data, [b'byte']) == b'this'
     assert dot_get(data, ['nested', 1]) == '1'
     assert dot_get(data, ['nested', None]) == 'null'
 
